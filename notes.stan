@@ -1,7 +1,7 @@
 
 // Useful notes:
 // Can impose summing up constraints with "transformed parameters" block.  See p. 135 ff.
-
+ // See page 155 in the docs for truncated normal w/ Mprobit.  
 
 
 
