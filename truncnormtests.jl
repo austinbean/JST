@@ -2,7 +2,7 @@
 
 
 # Testing the Truncated dist... 
-
+# These tests all pass.
 module Testing end
 eval(Testing, distextend)
 d = Testing.TruncatedNormal(0, 1, 0, 1)
@@ -25,6 +25,7 @@ dat1 = Dict{Symbol, Any}(
 dat1[:xm] = dat1[:x1]
 
 
+# this works
 m1 = Model(
 
     y = Stochastic(1,
@@ -73,7 +74,7 @@ m2 = Model(
         begin  # this block I think is going to let me apply the new univariate dist Truncated to the whole mu ???
             sigma = sqrt(s2)
             UnivariateDistribution[
-            TruncatedNormal(mu[i], sigma, 0, 1,) for i = 1:length(mu)
+            TruncatedNormal(mu[i], sigma, 0, 1,) for i = 1:length(mu) # truncated normal draws for |mu| parameters.  
             ]  
         end, 
         false
@@ -85,7 +86,7 @@ m2 = Model(
         ),
 
     β = Stochastic(1,
-        ()->MvNormal(2, sqrt(1000)), # would like this to be truncated.  
+        ()->MvNormal(2, sqrt(1000)),   
         ),
 
     s2 = Stochastic(
