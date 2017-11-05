@@ -14,7 +14,11 @@ using Mamba
         ul::Float64 
 
         # TODO - add something like:
-        # TruncatedNormal{T}(mu, sigma, ll, ul) where T =  @check_args(TruncatedNormal, ll < ul, sigma > zero(sigma); new{T}(mu, sigma, ll, ul)) 
+        # function TruncatedNormal(mu::Float64, sigma::Float64, ll::Float64, ul::Float64)
+        #     ll <= ul || throw(ArgumentError("Lower Limit ll must be less than upper limit ul in Truncated Normal"))
+        #     # ll < ul 
+        #     new(mu, sigma, ll, ul)
+        # end  
     end
 
     # maximum and minimum methods 
