@@ -39,12 +39,12 @@ m1 = Model(
 
     y = Stochastic(1, # this is 1-dimensional since β1, β2, β3 all appear 
         (mu, sigma, ll, ul) -> begin # note that zeros come first...
-            if 
-                [TruncatedNormal(mu,sqrt(sigma),ll ,ul) for i =1:ny-1], # see if parameter ny from global scope can be accessed here.
+            if true # this condition needs to be something related to the dimension of y.  
+                [TruncatedNormal(mu,sqrt(sigma),ll ,ul) for i =1:ny-1] # see if parameter ny from global scope can be accessed here.
             else 
-
+                # do nothing.  
             end 
-        end
+        end # of begin block.  
         false),
 
     mu = Logical(1,
